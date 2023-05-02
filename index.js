@@ -1,4 +1,3 @@
-<p id="my-score">Test2</p>;
 let deckId;
 let computerScore = 0;
 let myScore = 0;
@@ -38,25 +37,19 @@ drawCardBtn.addEventListener("click", () => {
 
       if (data.remaining === 0) {
         drawCardBtn.disabled = true;
+        if (computerScore > myScore) {
+          // display "The computer won the game!"
+          header.textContent = "The computer won the game!";
+        } else if (myScore > computerScore) {
+          // display "You won the game!"
+          header.textContent = "You won the game!";
+        } else {
+          // display "It's a tie game!"
+          header.textContent = "It's a tie game!";
+        }
       }
     });
 });
-
-/**
- * Challenge:
- *
- * Keep score! Every time the computer wins a hand, add a point to
- * the computer's score. Do the same for every time you win a hand.
- * If it's a war, no points are awarded to either player. If it's
- * a war (same card values), no one is awarded points.
- *
- * Display the computer's score above the top card, display your
- * own score BELOW the bottom card.
- *
- * Track the scores in a global variable defined at the top of this file
- *
- * Add to the global scores inside the `determineCardWinner` function below.
- */
 
 function determineCardWinner(card1, card2) {
   const valueOptions = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE"];
